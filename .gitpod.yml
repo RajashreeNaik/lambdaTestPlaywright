@@ -1,0 +1,23 @@
+# .gitpod.yml file for Playwright
+tasks:
+  - name: Setup & Install Playwright
+    # The 'init' phase runs during workspace pre-build or initialization
+    init: |
+      npm install
+      npx playwright install-deps
+      echo "Dependencies and system libraries installed."
+
+    # The 'command' phase runs every time the workspace starts
+    command: |
+      # Install browsers if they aren't already there
+      npx playwright install
+      echo "Playwright environment is ready."
+      # Uncomment the next line to run tests automatically on start:
+      # npx playwright test
+
+# Specify VS Code extensions for a better Playwright experience
+vscode:
+  extensions:
+    - ms-playwright.playwright # Official Playwright extension
+    - dbaeumer.vscode-eslint   # Linting for JavaScript/TypeScript
+    - esbenp.prettier-vscode   # Code formatting
